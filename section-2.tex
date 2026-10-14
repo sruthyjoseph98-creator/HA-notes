@@ -1,0 +1,107 @@
+\section{Presentable infinity categories}
+\begin{definition}
+    A locally presentable 1 category $C$ is a category that admits all small colimits and is generated under small colimits by a set of $k$-compact objects for $k$ a regular cardinal.
+\end{definition}
+
+\begin{proposition}
+For $C, D$ presentable categories a functor $F: C \to D$ has a right adjoint if it preserves all small colimits.
+\end{proposition}
+
+\begin{question}
+    Is it $k$-small colimits for $k$-presentable categories?
+\end{question}
+
+\begin{definition}
+    The homotopy category of an $\infty$-category $C$, denoted $hC$, has objects as in your infinity category and morphisms as homotopy classes of morphisms in $C$.
+\end{definition}
+\begin{remark}
+    Taking the homotopy category is a kind of localisation procedure called bousfield localisation. This is functorial and if left adjoint to taking the simplicial nerve of a 1-category, $N$.
+\end{remark}
+
+\begin{definition}
+    The functor category of two $\infty$-categories is $Fun(S, T):\Delta^{op} \to Set; [n] \to Hom(\Delta^n\times S, T)$.
+    If T is an $\infty$-category then so is $Fun(S, T)$, if $T$ is a Kan complex then so is $Fun(S, T)$.
+\end{definition}
+
+It is common to go between simplicially enriched categories and $\infty$-categories via a nerve functor. There is an important simplicial category $\mathbb{C}[\Delta^n]$ has objects as elements in $[n]$ and $Hom(i, j):=N(P_{ij})$, for poset $P_{ij}:=\{ k=\{i< ...<j\}\subset{[n]}\}$.
+
+\begin{definition}
+    The homotopy coherent nerve of an $\infty$-category $C$, $N^{hc}(C)$, is the simplicial set $[n] \mapsto Hom_{Cat_\Delta}(\mathbb{C}[\Delta^n], C)$. 
+\end{definition}
+
+\begin{proposition}
+    $N^hc(Kan)$ is the $\infty$-category of spaces. Where Kan is the simplicial category with objects as simplices which are kan complexes, and hom simplicial sets are the functor categories defined above.
+\end{proposition}
+
+\begin{remark}
+    It is a symptom of working with quasicategories that it is necessary to go between simplicially enriched categories and simplicial sets when we are changing categorical levels. The above example is the prototypical one, a category of simplicial sets is automatically simplicially enriched, but is not automatically a simplicial set.
+\end{remark}
+
+\begin{remark}
+    The infinity category of infinity categories is $QC:=N^{hc}(QCat)$, where $QCat$ is the simplicially enriched category of simplicial sets which have all inner horn fillers.
+\end{remark}
+
+\begin{definition}
+    A natural transformation of functors of $\infty$-categories in $QC$, $\alpha:u \implies v$, $y,v :K \to C$ is a map of simplicial sets $\alpha:\Delta^1\times K \to C$ such that $\alpha|_{\{0\}\times K}=y$, and $\alpha|_{\{1\}\times K}=v$.
+\end{definition}
+
+\begin{question}
+    When does a natural transformation express something as a (co)limit of something else?
+\end{question}
+\begin{remark}
+    All natural transformations of $\infty$-categories as morphisms in $QC$ are invertible, since $QC$ is an $(\infty, 1)$-category. 
+\end{remark}
+
+\begin{question}
+    How can he invertibility of natural transformations can also be shown using only  that it is a map of simplicial sets where all the 2 and higher morphisms are themselves invertible?
+\end{question}
+
+\begin{remark}
+    A colimit of diagram $K \to C$ is a functor is simplicial sets $c:K^> :=K\star \Delta^0 \to C$.
+
+    If K is a filtered category then this is a filtered colimit.
+\end{remark}
+
+\begin{definition}
+    Let $k$ be a small regular cardinal, 
+\end{definition}
+
+\begin{definition}
+    The nerve of an accessible 1-category $C_0$ is $\infty$-category $C:=Ind_k(C_0)$.
+\end{definition}
+
+\begin{example}
+    $QC=Ind_{\aleph_0}(QC_{fin})$ where $QC_{fin}$ is essentially finite $\infty$-categories.
+    Similarly, $S=Ind_{\aleph_0}(S_{fin})$ of essentially finite kan complexes.
+\end{example}
+
+\begin{definition}
+    An $\infty$-category is presentable if it is both accessible and (co)complete.
+
+\end{definition}
+\begin{example}
+    $S$ and $QC$ are both presentable categories.
+\end{example}
+
+\begin{theorem}
+    Let $C, D$ be presentable $\infty$-categories then a functor $C \to D$ admits a right adjoint iff it preserves small colimits, and admits a left adjoint iff it is accessible and preserves small limits.
+\end{theorem}
+\begin{proof}($\impliedby)$
+Assume $F: C \to D$ preserves all small colimits, we will show it has a right adjoint.
+
+It suffices to show that for every representable functor $h_D:\mathcal{D}^{op} \to S$ that $h_D\circ F^{op}$ is representable by an object of $C$. To show this it suffices to show that $h_D\circ F^{op}$ preserves small limits.
+\end{proof}
+
+\begin{question}
+    Is it true that the $\infty$-category $S$ is presentable, but the 1-category of spaces is not locally presentable?
+    Can we show that S is presentable by shwoing that it is a localisation of the infinity category of chain complexes? Because the 1-category of chain complexes is presentable?
+\end{question}
+
+\begin{question}
+What is an accessible $\infty$-category? and what is an ind completion? 
+\end{question}
+
+\begin{question}
+    What is the full proof of the adjoint functor theorem in the $\infty$ setting?
+\end{question}
+
