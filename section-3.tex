@@ -1,0 +1,451 @@
+%\documentclass{article}
+%\usepackage{graphicx} % Required for inserting images
+%\usepackage[english]{babel}
+
+%\usepackage[all,cmtip]{xy}
+%\usepackage{tikz-cd}
+%\usepackage[active]{srcltx}
+%\usepackage{a4}
+%\usepackage{latexsym}
+%\usepackage[latin1]{inputenc}
+%\usepackage{fontenc}
+%\usepackage[utf8]{inputenc}
+%\usepackage{textcomp}
+%\usepackage{enumitem}%for arabic numbering
+
+%\usepackage{ngerman}
+%\usepackage{amsmath,amsthm,amssymb} 
+%\usepackage{extpfeil} % For \xhookrightarrow
+%\usepackage{xfrac} 
+%\usepackage{mathrsfs} %To use mathscr
+%\usepackage{xcolor}%to use textcolor
+
+
+%\usepackage{bbm}%to write 1 in mathbb
+
+%\usepackage{tikz}
+%\usetikzlibrary{decorations.markings}
+%\usetikzlibrary{decorations.pathmorphing,arrows.meta}
+
+%\usepackage{quiver}%per usare quiver col file deidicato
+%\usepackage[margin=2cm]{geometry}
+%\usepackage{hyperref}
+%\hypersetup{
+	%colorlinks,
+	%linkcolor={red!50!black},
+	%citecolor={blue!50!black},
+	%urlcolor={cyan!80!black}
+%}
+
+%\input{Comands}
+
+%teoremi
+%\newtheorem{prop}{Proposition}[section]
+%\newtheorem{teo}[prop]{Theorem}       % Condivide il contatore con Proposition
+%\newtheorem{en}[prop]{Enunciato}      % Condivide il contatore con Proposition
+%\newtheorem{lem}[prop]{Lemma}         % Condivide il contatore con Proposition
+%\newtheorem{cor}[prop]{Corollary}     % Condivide il contatore con Proposition
+%\newtheorem*{conv}{Convention}        % Senza numero
+%\newtheorem{claim}[prop]{Claim}
+
+%osservazioni
+%\theoremstyle{remark}
+%\newtheorem{oss}[prop]{Remark}
+%\newtheorem*{nota}{Note}
+
+%definzioni ed esempi
+%\theoremstyle{definition}
+%\newtheorem{defin}[prop]{Definition}
+%\newtheorem{ex}[prop]{Example}
+%\newtheorem{constr}[prop]{Construction}
+%\newtheorem*{notaz}{Notation}
+%\newtheorem{war}[prop]{Warning}
+%\newtheorem*{warn}{Warning}
+
+
+%\title{Stable $\infty$-categories}
+%\author{Lorenzo Pascarella}
+%\date{October2026}
+
+%\begin{document}
+%\maketitle
+%\tableofcontents
+%\section{References}
+
+The main reference for the third section of these notes is \cite[Chapter 4]{Cnossen2026StableHomotopy}, while for the second section see \cite{weibel1994introduction}.
+\section{Derived category}
+It is common in geometry and more generally in algebra and topology to attach invariant to an object $X$ in order to better understand its properties. Arguably the most famous among these invariants are cohomology and homology theories. A (co)homology theory work by taking an object $X$, cooking a (co)chain complex out of it
+
+\[\cdots\to C(X)_1\to C(X)_0\to C(X)_{-1}\to\cdots.\]
+
+and then we computing its (co)homology:
+
+\[H_n(C_\bullet(X))=\frac{\ker(d_n)}{\im(d_{n-1})}.\]
+
+Usually we are not able to compute these invariants and so we look for ways to simply computations. So how do we do that? Well, first notice that we do not actually care about $C_\bullet(X)$, but rather its (co)homology. Meaning that if found a complex $C'_\bullet(X)$ such that $H_n(C_\bullet(X))=H_n(C'_\bullet(X))$ then we might as well use $C'_\bullet(X)$.
+
+\begin{definition}
+    Two (co)chain complex $C$ and $C'$ are said to be \emph{quasi-isomorphic} if there exist a morphism of (co)chain complex $f:C\to C'$ that induce isomorphism in (co)homology.
+\end{definition}
+\begin{war}
+    It is not enough to have the same (co)homology to be quasi-isomorphic! You need the morphism $f$.
+\end{war}
+The above discussion is telling us that instead of looking at the category of (co)chaincomplex $\Ch(\Z)$, we can reduce ourself to considering (co)chaincomplexes up to quasi-isomorphism. That is we consider the \emph{derived category}
+\[\mathcal{D}(\Z)=\Ch(\Z)[(quasi \  iso.)^{-1}].\]
+\subsection{$\mathcal{D(\Z)}$ is pointed}
+\begin{definition}
+    Let $C$ be a category, then we it is pointed if there exist an object $pt\in C$ such that $pt$ is both initial and terminal, i.e. for every object $X\in C$ there exist unique morphims  $X\to pt$ and $pt\to X$.
+\end{definition}
+\begin{proposition}
+    $\mathcal{D(\Z)}$ is a naturally pointed with point $0$.
+\end{proposition}
+\subsection{$Ch(\Z)$ enrichment}
+We all know that in $Ch(\Z)$ the Hom set has the structure of an abelian group. We can go even further and for every $X,Y\in Ch(\Z)$ construct a chain complex $\underline{Hom}(X,Y)$.
+
+
+\subsection{Stability of $\mathcal{D(\Z)}$}
+
+
+
+%\begin{defin}
+ %  Let $f:A\to B$ be a morphism of complexes. We define the  \emph{mapping cone of} f $\operatorname{cone}(f)$ as the homotopy cofiber of $f:A\to B$.
+%\end{defin}
+
+%We now give an explicit model for $\operatorname{cone}(f)$:
+
+\begin{definition}
+    Given $A\in\Ch(\A)$, we define the \textit{cone of A} as:
+    \begin{align*}
+       \cone(A) =(...\longrightarrow A_1\oplus A_0\xrightarrow{d_1=(\begin{smallmatrix}
+        d&-1\\
+        0 &d
+    \end{smallmatrix})}A_0\oplus A_1 \xrightarrow{d_0=(\begin{smallmatrix}
+        d&1\\
+        0 &d
+    \end{smallmatrix})} A_{-1}\oplus A_{-2}\longrightarrow...)
+    \end{align*}
+\end{definition}
+
+
+
+Given a morphism of complexes $f: A\to B$, we may construct what is called \emph{mapping cone of} $f$ as the following pushout:
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzAsMiwiXFxvcGVyYXRvcm5hbWV7Y29uZX0oQSkiXSxbMiwwLCJCIl0sWzIsMiwiXFxvcGVyYXRvcm5hbWV7Y29uZX0oZikiXSxbMCwxXSxbMCwyXSxbMiwzXSxbMSwzXSxbMywwLCIiLDEseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
+
+\[
+\begin{tikzcd}[cramped,sep=small]
+	A && B \\
+	\\
+	{\operatorname{cone}(A)} && {\operatorname{cone}(f)}
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-1, to=3-1]
+	\arrow[from=1-3, to=3-3]
+	\arrow[from=3-1, to=3-3]
+	\arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=3-3, to=1-1]
+\end{tikzcd}\]
+If you have never seen this before, think of it as a fancy (homotopical) version of the cokernel\footnote{In fact, if
+    \[0\to A\to B\to C\to 0\]
+    is exact in $\Ch(\Z)$, then there is a quasi isomorphism $\cone(f)\to C$ (i.e. $\cone(f)$ and $C$ are equivalent in $\mathcal{D}(\Z)$). }.
+
+
+
+
+
+\textbf{Fact.} In $\Ch(\Z)$ we have a triangles 
+
+    \begin{center}
+    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJBIl0sWzIsMCwiQiJdLFsxLDEsIlxcb3BlcmF0b3JuYW1le2NvbmV9KGYpIl0sWzAsMSwiZiJdLFsxLDJdLFsyLDAsIisxIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+\begin{tikzcd}
+	A && B \\
+	& {\operatorname{cone}(f)}
+	\arrow["f", from=1-1, to=1-3]
+	\arrow[from=1-3, to=2-2]
+	\arrow["{+1}", dashed, from=2-2, to=1-1]
+\end{tikzcd}
+    \end{center}
+
+      As a consequence we can construct long exact sequences:
+
+    \[\cdots\to H_n(A)\to H_n(B)\to H_n(\cone(f))\to H_{n-1}(A)\cdots.\]
+
+    More generally, if 
+    \[A \overset{f}{\to} B\overset{g}{\to} Z\]
+    is such that $(g\circ f)=0$ in $\mathcal{D}(\Z)$ and $\cone(f)\to Z$ is quasi isomorphism we have 
+    \[\cdots\to H_n(A)\to H_n(B)\to H_n(Z)\to H_{n-1}(A)\cdots.\]
+    we call such sequence \emph{homotopy cofiber sequence}. Dually we can define \emph{homotopy fiber sequence}.
+
+    
+    \begin{proposition}
+    \label{stability_derived_cat}
+        In $\mathcal{D}(\Z)$
+        a sequence is an homotopy cofiber sequence if and only if is an homotopy fiber sequence.
+    \end{proposition}
+
+
+
+    \section{stable $\infty$-categories}
+    Keeping in mind the derived category we will try to categorify its features and this will lead us to the definition of a stable category. 
+
+    \subsection{pointed categories}
+    \begin{definition}[nullsquences and (co)fiber sequences]
+Let $C$ be a pointed $\infty$-category. A \emph{nullsequence} in
+$C$ is a sequence of morphisms
+\[X\overset{f}{\to}Y\overset{g}{\to} Z\]
+equipped with a specified nullhomotopy $f◦g\simeq 0$.  
+\end{definition}
+
+\begin{remark}
+ A nullsequence is equivalently a commutative square in $C$ of the form
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzAsMiwiMCJdLFsyLDAsIlkiXSxbMiwyLCJaIl0sWzAsMV0sWzAsMiwiZiJdLFsyLDMsImciXSxbMSwzXV0=
+\[\begin{tikzcd}[sep=small]
+	X && Y \\
+	\\
+	0 && Z
+	\arrow["f", from=1-1, to=1-3]
+	\arrow[from=1-1, to=3-1]
+	\arrow["g", from=1-3, to=3-3]
+	\arrow[from=3-1, to=3-3]
+\end{tikzcd}\]  
+If this square is a pullback square in $C$, we say it is a \emph{fiber sequence},and refer to X as the \emph{fiber of $g$},
+written $X\simeq fib(g)$. If the square is a pushout square, we say it is a \emph{cofiber sequence}, and refer to Z
+as the \emph{cofiber of f}, written $z \simeq cofib(f)$.
+\end{remark}
+
+\begin{definition}[Loop and suspension]
+    Let $C$ be a pointed $\infty$-category. If $C$ admits fibers, we
+define the \emph{loop object} of $X\in C$ by
+\[\Omega X:= fib(0\to X)\]
+If $C$ admits cofibers, we
+define the \emph{suspension object} of $X\in C$ by
+\[\Sigma X:=cofib(0\to X)\]
+\end{definition}
+\textbf{Fact.} The loop and suspension constructions define endofunctors $\Omega,\Sigma:C\to C$. 
+\subsubsection{Example: Derived category}
+\begin{proposition}
+    $\operatorname{cone}(A)$ is acyclic.
+\end{proposition}
+\begin{proof}
+    \begin{align*}
+    d_n=\begin{pmatrix}
+    d^A_n&(-)^n id_{A_{n-1}}\\
+    0& d^A_{n-1}
+\end{pmatrix}
+\end{align*}
+In particular, if $(a_n, a_{n-1})\in \ker(d_n)$, then $d_{n-1}a_{n-1}=0$ and $d_n a_n=(-)^{n+1}a_{n-1}$, so  $(a_n, a_{n-1})= (a_n, (-)^{n+1}d_n a_n)$. As a consequence:
+\[d_{n+1}(0,(-)^{n+1}a_n)=(0+(-)^{n+1}(-)^{n+1}a_n,(-)^{n+1}d_n a_n=(a_n,a_{n-1})\in \im(d_{n+1}\]
+and hence $H_n(\operatorname{cone}(A))=0$
+\end{proof}
+
+Now looking back at the definition of $\operatorname{cone}(f)$, we see that in $\D(\Z)$
+
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzAsMiwiXFxvcGVyYXRvcm5hbWV7Y29uZX0oQSkiXSxbMiwwLCJCIl0sWzIsMiwiXFxvcGVyYXRvcm5hbWV7Y29uZX0oZikiXSxbMCwxXSxbMCwyXSxbMiwzXSxbMSwzXSxbMywwLCIiLDEseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
+
+\[
+\begin{tikzcd}[cramped,sep=small]
+	A && B \\
+	\\
+	{\operatorname{cone}(A)} && {\operatorname{cone}(f)}
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-1, to=3-1]
+	\arrow[from=1-3, to=3-3]
+	\arrow[from=3-1, to=3-3]
+\end{tikzcd} \simeq \begin{tikzcd}[cramped,sep=small]
+	A && B \\
+	\\
+	{0} && {\operatorname{cone}(f)}
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-1, to=3-1]
+	\arrow[from=1-3, to=3-3]
+	\arrow[from=3-1, to=3-3]
+\end{tikzcd} \]
+and the claim is that this is a cofiber sequence in $\D(\Z)$. In particular,
+
+\[A \to \operatorname{cone}(A)\to A[1]\quad\simeq A \to 0\to A[1].\]
+
+This means $A[1]\simeq \Sigma A.$ Now by Proposition \ref{stability_derived_cat} we have: $\Omega\Sigma A\simeq A.$  This is a long way to say that $A[1][-1]$ and $A$ are quasi isomorphic.
+
+\begin{war}
+    Notice that the above situation is not true in other categories. In particular, in the category of topological spaces, $\Omega\Sigma X$ is not, in general, weakly equivalent to $X$\footnote{Not even in the $\infty$-category of animae $Top[(weak\ equivalences)^{-1}]$}.
+\end{war}
+
+\subsection{Definition and first properties}
+Keeping in mind the example of $\mathcal{D}(\Z)$ we now give the following definition an $\infty$-category
+
+    \begin{definition}[stable $\infty$-category]
+    An $\infty$-category $C$ is \emph{stable} if:
+    \begin{enumerate}[label=\arabic*)]
+        \item $C$ is pointed
+        \item $C$ admits fibers and cofibers
+        \item a nullsequence is $X\to Y\to Z$ is a fiber if and only if is a cofiber.
+    \end{enumerate}
+\end{definition}
+
+    \begin{theorem}[characterization of stable categories]
+    Let $C$ be a pointed $\infty$-category, the following are equivalent:
+    \begin{enumerate}[label=\arabic*)]
+        \item $C$ is stable
+        \item $C$ admits pushout and pullbacks, and a commtative square 
+        % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzAsMiwiVyJdLFsyLDAsIlkiXSxbMiwyLCJaIl0sWzAsMV0sWzAsMl0sWzIsM10sWzEsM11d
+\[\begin{tikzcd}[sep=scriptsize]
+	X && Y \\
+	\\
+	W && Z
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-1, to=3-1]
+	\arrow[from=1-3, to=3-3]
+	\arrow[from=3-1, to=3-3]
+\end{tikzcd}\]
+is a pushout if and only if is a pullback.
+        \item $C$ admits fibers and the loop functor $\Omega:C\to C$ is an equivalence
+        
+        \item $C$ admits cofibers and the suspension functor $\Sigma:C\to C$ is an equivalence
+        \item $C$ has all finite limits and colimits and finite limits commute with finite colimits.
+    \end{enumerate}
+\end{theorem}
+
+\begin{definition}[Semi-additive and additive]
+    An $\infty$-category is \emph{semi-additive} if it has a zero object, finite products, finite coproduts and the map:
+    % https://q.uiver.app/#q=WzAsMixbMCwwLCJYXFxjb3Byb2QgWSJdLFsyLDAsIlhcXHRpbWVzIFkiXSxbMCwxLCJcXGJlZ2lue3BtYXRyaXh9IGlkICYgMCBcXFxcIDAgJiBpZCAgXFxlbmR7cG1hdHJpeH0iXV0=
+\[\begin{tikzcd}[sep=scriptsize]
+	{X\coprod Y} && {X\times Y}
+	\arrow["\begin{array}{c} \begin{pmatrix} \id & 0 \\ 0 & \id  \end{pmatrix} \end{array}", from=1-1, to=1-3]
+\end{tikzcd}\]
+is an equivalence. We write $\oplus$ for the resulting biproduct. We say that $C$ is \emph{C} is additive if, in addition, the shear map
+\[\begin{tikzcd}[sep=scriptsize]
+	{X\oplus X} && {X\oplus X}
+	\arrow["\begin{array}{c} \begin{pmatrix} \id & 0 \\ \id & \id  \end{pmatrix} \end{array}", from=1-1, to=1-3]
+\end{tikzcd}\]
+is an equivalence.
+
+\end{definition}
+
+
+
+\begin{remark}
+    For objects $X,Y$ in a semi-additive $\infty$-category $C$, we may equip $\pi_0 Hom_C(X,Y)$
+with the structure of an abelian monoid: given morphisms $f,g: X \to Y$, we define their sum $f +g$
+as the following composite:
+% https://q.uiver.app/#q=WzAsNCxbMiwwLCJYXFxvcGx1cyBYIl0sWzQsMCwiWVxcb3BsdXMgWSJdLFswLDAsIlhcXG9wbHVzIFgiXSxbNiwwLCJZIl0sWzAsMSwiZlxcb3BsdXMgZyJdLFsyLDAsIlxcRGVsdGEiXSxbMSwzLCJcXG5hYmxhIl1d
+\[\begin{tikzcd}[sep=scriptsize]
+	{X} && {X\oplus X} && {Y\oplus Y} && Y
+	\arrow["\Delta", from=1-1, to=1-3]
+	\arrow["{f\oplus g}", from=1-3, to=1-5]
+	\arrow["\nabla", from=1-5, to=1-7]
+\end{tikzcd}\]
+
+one can prove that this is indeed unital, associative and commutative. Then
+$C$ is additive if and only if $\pi_0 Hom_C(X,Y)$ is in fact a group.
+\end{remark}
+
+\begin{proposition}
+    Every stable category is additive.
+\end{proposition}
+
+\begin{definition}[Left exact $\infty$-categories] An $\infty$-category $C$ is called \emph{left exact}, or said to admit
+\emph{finite limits}, if it admits all $I$-indexed limits for all finite $\infty$-categories $C$. Similarly, a functor
+$F: C \to D$ between left exact $\infty$-categories is called \emph{left exact} if it preserves $I$-indexed limits for all
+$I\in Cat^{fin}_\infty$. We denote by
+$Cat^{lex}_\infty \subseteq Cat_\infty$
+the subcategory consisting of the left exact $\infty$-categories and left exact functors. Given two left
+exact $\infty$-categories $C$ and $D$,we denote by
+$\Fun^{lex} (C,D) \subseteq \Fun(C,D)$
+the full subcategory spanned by the left exact functors.
+
+Similarly we define \emph{right exactness} in terms of finite colimits.
+\end{definition}
+\subsection{Stabilization}
+
+For now our only example of a stable category is $\mathcal{\Z}$, however there is a universal way to construct a stable category out of an $\infty$-category with finite limits.
+
+\begin{definition}[stabilization]
+A stabilization of an $\infty$-category $C$ with finite limits is a stable $\infty$-category $Sp(C)$
+equipped with a left exact functor $\Omega^\infty: Sp(C)\to C$ such that for every stable $\infty$-category $D$ the
+composition functor
+\[\Omega^\infty\circ-: \Fun^{rex}\left(D,Sp(C)\right)\simeq\Fun^{lex}\left(D,Sp(C)\right)\to\Fun^{lex}\left(D,C\right)\]
+is an equivalence.
+\end{definition}
+
+\begin{definition}
+    Let $F: C \to D$ be a functor between $\infty$-categories.
+    \begin{enumerate}[label=\arabic*)]
+        \item If $C$ admits pushouts, we say that $F$ is excisive if it sends pushout squares in $C$ to pullback squares in $D$. 
+        \item If C admits a terminal object, we say that $F$ is reduced if it sends the terminal object of  $C$ to a terminal object of $D$.
+    \end{enumerate} 
+\end{definition}
+
+\begin{proposition}[Excisiveness criterion)]
+\label{Excisiveness criterion}
+    Let $C$ be a pointed $\infty$-category with finite colimits and
+let $D$ be a pointed $\infty$-category with finite limits. A reduced functor $F:C\to D$ is excisive if and
+onlyif the map $\eta_X\colon F(X)\to\Omega F(\Sigma X)$is an isomorphism for every object $X\in C$.
+\end{proposition}
+
+\begin{theorem}
+    Let $C$ be an $\infty$-category with finite limits, then the stabilization of $C$ exists  and is equivalently given by :
+    \begin{enumerate}
+        \item $Sp^\Omega(C):=\lim(\cdots\to C_{*/}\overset{\Omega}{\longrightarrow} C_{*/}\overset{\Omega}{\longrightarrow}C_{*/})$
+        \item The $\infty$-category $Exc_*(An_*^{fin},C)$ of reduced and excisive functors. 
+    \end{enumerate}
+\end{theorem}
+
+Heuristically an object of $X\in Sp^\Omega(C)$ can be thought of as a sequence:
+$(\ldots, X_3,X_2,X_1,X_0)$ with equivalences $ X_n\to \Omega X_{n+1}$. In particular $X_0\overset{\sim}{\to}\Omega^n X_n$ for every $n$, that should make clear that the functor $\Omega^\infty:Sp^\Omega(C)\to C$ is given by :
+
+\[(\ldots, X_3,X_2,X_1,X_0)\mapsto X_0.\]
+
+This description also suggest that the equivalence between the two models of the stabilization $Exc_*(An_*^{fin},C)\to Sp^\Omega(C)$ on object should be:
+
+\[F\mapsto(\cdots,F(S^3),F(S^2),F(S^1),F(S^0)).\]
+
+Notice that by Proposition \ref{Excisiveness criterion} this indeed defines an object in $Sp^{\Omega}(C)$
+\[F(S^n)\to \Omega F(S^{n+1})\simeq \Omega F(\Sigma S^{n}).\]
+
+\begin{proposition}
+    The fully faithful inclusion functor 
+    $Cat^{st}_\infty\hookrightarrow Cat^{lex}_\infty$ admits a right adjoint
+
+ \[Sp:Cat^{lex}_\infty\to Cat^{st}_\infty\]
+
+given on objects by sending $C$ to its stabilization $Sp(C)$. The counit $Sp(C)\to C$of the adjunction
+is given by $\Omega^\infty$.
+\end{proposition}
+
+\subsection{Examples}
+\begin{enumerate}[label=\arabic*)]
+    \item The derived category of an abelian category $\mathcal{A}.$
+    \item The stabilization of the $\infty$-category of animae $Sp:=Sp^\Omega(An)$, also known as the $\infty$-\emph{category of spectra}. Cool fact about spectra: thanks to brown representability we have that
+    \[\{\text{generalized cohomoligy theory}\}\overset{\sim}{\longrightarrow}Ho(Sp)^{op}\]
+\end{enumerate}
+
+\subsection{mapping spectrum}
+Every stable $\infty$-category is enriched over spectra. Meaning that the the Hom space can be promoted to a spectrum
+\begin{proposition}
+    For astable $\infty$-category C, there exists a unique functor
+$hom_(-,-): C^{op} \times C\to Sp$
+that is exact in both variables and fits in a commutative triangle as follows:
+% https://q.uiver.app/#q=WzAsMyxbMCwyLCJDXntvcH1cXHRpbWVzIEMiXSxbMiwyLCJBbiJdLFsyLDAsIlNwIl0sWzAsMSwiSG9tX2MiLDJdLFswLDIsImhvbV9jIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzIsMSwiXFxPbWVnYV5cXGluZnR5Il1d
+\[\begin{tikzcd}[sep=scriptsize]
+	&& Sp \\
+	\\
+	{C^{op}\times C} && An
+	\arrow["{\Omega^\infty}", from=1-3, to=3-3]
+	\arrow["{hom_c}", dashed, from=3-1, to=1-3]
+	\arrow["{Hom_c}"', from=3-1, to=3-3]
+\end{tikzcd}\]
+\end{proposition}
+\begin{proof}
+     Consider the Yoneda embedding
+     \[C\hookrightarrow \Fun(C^{\op},\An),\quad Y\mapsto\Hom_C(-,Y).\]
+This lands in left exact functors, so by the universal property of spectra we have a unique lift of 
+\[C\hookrightarrow\Fun^{ex}(C^{\op},Sp), \quad Y\mapsto\hom_C(-,Y).\] It suffices to check this after composing with
+the functors $(-)_n: Sp \to \An$, which are left exact and jointly conservative. Since we have
+$\hom_C (X, Y)_n\simeq\hom_C (X[-n], Y)_0 \simeq \Hom_C (X[-n], Y)$, this follows from the left exactness of
+$\Hom_C (X[-n], -): Sp \to \An.$
+
+
+\end{proof}
+
+
+\begin{remark}
+    When $C$ is $\mathcal{D(\Z)}$ the mapping spectrum is intimately related to the internal hom of $Ch(\Z).$
+\end{remark}
