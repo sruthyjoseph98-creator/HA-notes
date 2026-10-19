@@ -16,7 +16,7 @@ jobs:
           file main.pdf | grep -q ' PDF '
       - name: Upload file to repository
         env:
-         GITHUB_TOKEN:${{ secrets.GH_PAT }}
+         GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           git config --global user.name "malthefogsporring"
           git config --global user.email "malthe@sporring.eu"
