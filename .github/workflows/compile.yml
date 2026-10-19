@@ -18,8 +18,9 @@ jobs:
         env:
          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          git config --global user.name "malthefogsporring"
-          git config --global user.email "malthe@sporring.eu"
+          git config --global user.name "sruthyjoseph98-creator"
+          git config --global user.email "sruthyjoseph98@gmail.com"
+          git remote set-url origin https://sruthyjoseph98-creator:${{ secrets.GH_PAT }}@github.com/sruthyjoseph98-creator/HA-notes.git
           git add main.pdf
           git commit -m "Compile main.pdf"
-          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/sruthyjoseph98-creator/HA-notes.git
+          git push origin HEAD
